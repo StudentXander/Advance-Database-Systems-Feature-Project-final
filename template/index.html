@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>HRM Project</title>
+</head>
+<body>
+    <h1>Welcome to the HRM Project</h1>
+
+    <h2>Candidates</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <!-- Add other columns as needed -->
+        </tr>
+        {% for candidate in candidates %}
+            <tr>
+                <td>{{ candidate.IDcandidate }}</td>
+                <td>{{ candidate.last_name }}</td>
+                <td>{{ candidate.first_name }}</td>
+                <!-- Add other columns as needed -->
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Job Positions</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Position</th>
+            <th>Description</th>
+            <!-- Add other columns as needed -->
+        </tr>
+        {% for job_position in job_positions %}
+            <tr>
+                <td>{{ job_position.JobID }}</td>
+                <td>{{ job_position.Position }}</td>
+                <td>{{ job_position.Description }}</td>
+                <!-- Add other columns as needed -->
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Matches</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Job ID</th>
+            <th>Candidate ID</th>
+            <th>Match Score</th>
+            <th>Status</th>
+            <!-- Add other columns as needed -->
+        </tr>
+        {% for match in matches %}
+            <tr>
+                <td>{{ match.MatchID }}</td>
+                <td>{{ match.JobID }}</td>
+                <td>{{ match.CandidateID }}</td>
+                <td>{{ match.MatchScore }}</td>
+                <td>{{ match.Status }}</td>
+                <!-- Add other columns as needed -->
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{{ url_for('train_model_route') }}">Train Model</a>
+    <a href="{{ url_for('predict_match_route') }}">Predict Match</a>
+</body>
+</html>
